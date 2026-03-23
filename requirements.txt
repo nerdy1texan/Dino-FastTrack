@@ -1,0 +1,17 @@
+torch
+torchvision
+torchaudio
+timm
+transformers
+datasets
+scikit-learn
+matplotlib
+seaborn
+pandas
+pillow
+opencv-python
+jupyter
+ipykernel
+tqdm
+joblib
+requests
