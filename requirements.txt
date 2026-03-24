@@ -1,6 +1,6 @@
-torch
-torchvision
-torchaudio
+# PyTorch is NOT listed here on purpose — install it first so you pick GPU (CUDA) or CPU wheels.
+# See README.md: "Install PyTorch (GPU or CPU), then the rest".
+#
 timm
 transformers
 datasets
