@@ -5,7 +5,7 @@
 ## Steps at a glance (do in order)
 
 1. **Read the plan** — `docs/dinov2_dinov3_master_training_plan.md` (phases, schedule, dataset links, KPIs).
-2. **Create the environment** — use [Quick launch](#quick-launch) below; pick the `Python (dino-fasttrack)` kernel in Jupyter.
+2. **Create the environment** — use [Quick launch](#quick-launch) below; in Cursor pick the **`Python (dino-fasttrack)`** kernel for each `.ipynb` (no need to run `jupyter notebook`).
 3. **`00_environment_and_sanity_checks.ipynb`** — verify CPU/GPU, cache folders, download CIFAR-10, load DINO (v3-ready fallback to v2), run one embedding sanity check.
 4. **`01_dinov2_image_classification_and_embeddings.ipynb`** — frozen DINO embeddings → linear classifier → metrics + nearest-neighbor retrieval; saves artifacts under `artifacts/`.
 5. **`02_detection_segmentation_video_and_defect_blueprint.ipynb`** — detection/segmentation baselines, optional video + frame anomaly scores, enterprise defect-pipeline blueprint. Put test images in `data/images/` and videos in `data/video/`.
@@ -76,10 +76,27 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 ```bash
 pip install -r requirements.txt
 python -m ipykernel install --user --name dino-fasttrack --display-name "Python (dino-fasttrack)"
-jupyter notebook
 ```
 
-Use the `Python (dino-fasttrack)` kernel in each notebook.
+**Cursor / VS Code:** open any `.ipynb`, use the kernel picker (top-right) and choose **`Python (dino-fasttrack)`**. You do **not** need to start `jupyter notebook` in a terminal.
+
+**Optional — browser Jupyter only:** if you ever want the classic web UI, install separately:  
+`pip install "notebook>=6.5,<7"` then run `jupyter notebook`.
+
+### Windows: `pip install` fails on a very long path under `...\jupyter\labextensions\...`
+
+That happens when **`jupyter`** / **JupyterLab** (heavy `labextensions` trees) is installed. **This repo’s `requirements.txt` does not install those** — only **`ipykernel`** for Cursor/VS Code — so you usually avoid the issue entirely.
+
+If you still hit it (e.g. you installed `jupyter` yourself):
+
+**Option A — Permanent fix (admin):** enable **Win32 long paths** (same as [Microsoft / pip hint](https://pip.pypa.io/warnings/enable-long-paths)), then reinstall.
+
+**Option B — Avoid the stack:** uninstall the metapackage and use Cursor only:
+
+```bash
+pip uninstall jupyter jupyterlab notebook jupyterlab-widgets -y
+pip install -r requirements.txt
+```
 
 ### Drivers / CUDA vs “fallback to CPU”
 

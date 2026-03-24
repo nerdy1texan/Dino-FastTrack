@@ -1,6 +1,10 @@
 # PyTorch is NOT listed here on purpose — install it first so you pick GPU (CUDA) or CPU wheels.
 # See README.md: "Install PyTorch (GPU or CPU), then the rest".
 #
+# Notebooks in Cursor / VS Code only need ipykernel (no Jupyter server / browser UI required).
+# Optional — classic browser UI only: pip install "notebook>=6.5,<7"
+# Avoid `jupyter` metapackage on Windows without long-paths enabled (very deep paths under labextensions).
+#
 timm
 transformers
 datasets
@@ -10,7 +14,6 @@ seaborn
 pandas
 pillow
 opencv-python
-jupyter
 ipykernel
 tqdm
 joblib
